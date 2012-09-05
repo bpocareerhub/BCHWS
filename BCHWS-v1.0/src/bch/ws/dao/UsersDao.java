@@ -18,8 +18,7 @@ public class UsersDao extends DataAccessObject implements CRUD {
 		ArrayList<Users> users = new ArrayList<Users>();
 		try {
 			String sql = "select * from users";
-			Statement statement = this.getDatabase().getConnection().createStatement();
-			ResultSet rs = statement.executeQuery(sql);
+			ResultSet rs = this.getResultSet(sql);
 			
 			while(rs.next()) {
 				Users user = new Users();
