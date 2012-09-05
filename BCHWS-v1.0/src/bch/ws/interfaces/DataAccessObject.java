@@ -35,8 +35,15 @@ public abstract class DataAccessObject {
 		
 		return null;
 	}
+	
+	public Statement prepareStatement(String sql) throws SQLException {
+		return this.getDatabase().getConnection().prepareStatement(sql);
+	}
 
 	private Statement createStatement() throws SQLException {
 		return this.getDatabase().getConnection().createStatement();
 	}
+	
+	
+	
 }
