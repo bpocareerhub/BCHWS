@@ -1,20 +1,21 @@
 package bch.ws.runtime;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import bch.ws.beans.Users;
+import bch.ws.dao.UsersDao;
+import bch.ws.models.Database;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		/*System.out.println("Hello World");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		UsersDao uDao = new UsersDao();
 		
-		String input = br.readLine();
-		System.out.println("Hi " + input);*/
-		
-		Users user = new Users(1, 1, "joy", "cornejo");
-		System.out.println(user);
+		Users user = new Users();
+		user.setUser_id(35);
+		user.setEmail("ryan.bartolay@bpocareerhub.com");
+		user.setPassword("hello");
+		user.setGroup_id(5);
+		System.out.println(uDao.updateRecord(user));
 	}
 }
