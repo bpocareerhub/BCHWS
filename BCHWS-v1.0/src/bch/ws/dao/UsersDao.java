@@ -16,22 +16,24 @@ public class UsersDao extends DataAccessObject implements CRUD {
 	@Override
 	public ArrayList<Users> retrieveAll() {
 		ArrayList<Users> users = new ArrayList<Users>();
-		try {
+		
 			String sql = "select * from users";
 			ResultSet rs = this.getResultSet(sql);
 			
-			while(rs.next()) {
-				Users user = new Users();
-				user.setUser_id(rs.getLong("user_id"));
-				user.setGroup_id(rs.getInt("group_id"));
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-				users.add(user);
+			try {
+				while(rs.next()) {
+					Users user = new Users();
+					user.setUser_id(rs.getLong("user_id"));
+					user.setGroup_id(rs.getInt("group_id"));
+					user.setEmail(rs.getString("email"));
+					user.setPassword(rs.getString("password"));
+					users.add(user);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return users;
 	}
 

@@ -22,11 +22,17 @@ public abstract class DataAccessObject {
 		this.database = database;
 	}
 	
-	public ResultSet getResultSet(String sql) throws SQLException {
-		ResultSet rs = this.createStatement().executeQuery(sql);
-		if(rs.next()) {
-			return rs;
+	public ResultSet getResultSet(String sql) {
+		try {
+			ResultSet rs = this.createStatement().executeQuery(sql);
+			if(rs.next()) {
+				return rs;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return null;
 	}
 
