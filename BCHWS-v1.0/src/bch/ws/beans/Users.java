@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Users {
 	private long user_id;
-	private int group_id,parent_user_id,account_type_id,source_id,registration_id,active,flag,activated;
-	private String email, password,alternate_email,firstname,middlename,lastname,address_details;
-	private String profile_picture,phone_number,mobile_number,activation_code;
+	private int group_id,client_id,account_type_id,registration_id,activated,source_id,active,flag;
+	private String email,password,activation_code,alternate_email,firstname,middlename,lastname;
+	private String profile_picture,phone_number,mobile_number,address_details;
 	private char gender_code,nationality_code,address_city_code,address_region_code,address_country_code,marital_status_code;
 	private Date date_created,date_last_login,date_activated,date_of_birth;
 	
@@ -29,36 +29,46 @@ public class Users {
 		this.password = password;
 	}
 	
-	public Users(long user_id, int group_id, int parent_user_id,
-			int account_type_id, int source_id, String email, String password,
-			String alternate_email, String firstname, String middlename,
-			String lastname, String address_details, Date date_of_birth,
-			String profile_picture, String phone_number, String mobile_number,
+	public Users(long user_id, int group_id, int client_id,
+			int account_type_id, int registration_id, int activated,
+			int source_id, int active, int flag, String email, String password,
+			String activation_code, String alternate_email, String firstname,
+			String middlename, String lastname, String profile_picture,
+			String phone_number, String mobile_number, String address_details,
 			char gender_code, char nationality_code, char address_city_code,
 			char address_region_code, char address_country_code,
-			char marital_status_code) {
+			char marital_status_code, Date date_created, Date date_last_login,
+			Date date_activated, Date date_of_birth) {
 		this.user_id = user_id;
 		this.group_id = group_id;
-		this.parent_user_id = parent_user_id;
+		this.client_id = client_id;
 		this.account_type_id = account_type_id;
+		this.registration_id = registration_id;
+		this.activated = activated;
 		this.source_id = source_id;
+		this.active = active;
+		this.flag = flag;
 		this.email = email;
 		this.password = password;
+		this.activation_code = activation_code;
 		this.alternate_email = alternate_email;
 		this.firstname = firstname;
 		this.middlename = middlename;
 		this.lastname = lastname;
-		this.address_details = address_details;
-		this.date_of_birth = date_of_birth;
 		this.profile_picture = profile_picture;
 		this.phone_number = phone_number;
 		this.mobile_number = mobile_number;
+		this.address_details = address_details;
 		this.gender_code = gender_code;
 		this.nationality_code = nationality_code;
 		this.address_city_code = address_city_code;
 		this.address_region_code = address_region_code;
 		this.address_country_code = address_country_code;
 		this.marital_status_code = marital_status_code;
+		this.date_created = date_created;
+		this.date_last_login = date_last_login;
+		this.date_activated = date_activated;
+		this.date_of_birth = date_of_birth;
 	}
 	public long getUser_id() {
 		return user_id;
@@ -83,12 +93,6 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public int getParent_user_id() {
-		return parent_user_id;
-	}
-	public void setParent_user_id(int parent_user_id) {
-		this.parent_user_id = parent_user_id;
 	}
 	public int getAccount_type_id() {
 		return account_type_id;
@@ -192,7 +196,6 @@ public class Users {
 	public void setSource_id(int source_id) {
 		this.source_id = source_id;
 	}
-	
 	public int getRegistration_id() {
 		return registration_id;
 	}
@@ -213,6 +216,12 @@ public class Users {
 	}
 	public int getActivated() {
 		return activated;
+	}
+	public int getClient_id() {
+		return client_id;
+	}
+	public void setClient_id(int client_id) {
+		this.client_id = client_id;
 	}
 	public void setActivated(int activated) {
 		this.activated = activated;
@@ -241,6 +250,15 @@ public class Users {
 	public void setDate_activated(Date date_activated) {
 		this.date_activated = date_activated;
 	}
+	public boolean isAdministrator(int group_id) {
+		return (group_id == 1) ? true : false;
+	}
+	public boolean isCareerSeeker(int group_id) {
+		return (group_id == 2) ? true : false;
+	}
+	public boolean isClient(int group_id) {
+		return (group_id == 3) ? true : false;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -264,51 +282,24 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [user_id=" + user_id + ", group_id=" + group_id
-				+ ", parent_user_id=" + parent_user_id + ", account_type_id="
-				+ account_type_id + ", source_id=" + source_id
-				+ ", registration_id=" + registration_id + ", active=" + active
-				+ ", flag=" + flag + ", activated=" + activated + ", email="
-				+ email + ", password=" + password + ", alternate_email="
-				+ alternate_email + ", firstname=" + firstname
-				+ ", middlename=" + middlename + ", lastname=" + lastname
-				+ ", address_details=" + address_details + ", date_of_birth="
-				+ date_of_birth + ", profile_picture=" + profile_picture
-				+ ", phone_number=" + phone_number + ", mobile_number="
-				+ mobile_number + ", activation_code=" + activation_code
-				+ ", gender_code=" + gender_code + ", nationality_code="
-				+ nationality_code + ", address_city_code=" + address_city_code
+				+ ", client_id=" + client_id + ", account_type_id="
+				+ account_type_id + ", registration_id=" + registration_id
+				+ ", activated=" + activated + ", source_id=" + source_id
+				+ ", active=" + active + ", flag=" + flag + ", email=" + email
+				+ ", password=" + password + ", activation_code="
+				+ activation_code + ", alternate_email=" + alternate_email
+				+ ", firstname=" + firstname + ", middlename=" + middlename
+				+ ", lastname=" + lastname + ", profile_picture="
+				+ profile_picture + ", phone_number=" + phone_number
+				+ ", mobile_number=" + mobile_number + ", address_details="
+				+ address_details + ", gender_code=" + gender_code
+				+ ", nationality_code=" + nationality_code
+				+ ", address_city_code=" + address_city_code
 				+ ", address_region_code=" + address_region_code
 				+ ", address_country_code=" + address_country_code
 				+ ", marital_status_code=" + marital_status_code
 				+ ", date_created=" + date_created + ", date_last_login="
 				+ date_last_login + ", date_activated=" + date_activated
-				+ ", getUser_id()=" + getUser_id() + ", getGroup_id()="
-				+ getGroup_id() + ", getEmail()=" + getEmail()
-				+ ", getPassword()=" + getPassword() + ", getParent_user_id()="
-				+ getParent_user_id() + ", getAccount_type_id()="
-				+ getAccount_type_id() + ", getAlternate_email()="
-				+ getAlternate_email() + ", getFirstname()=" + getFirstname()
-				+ ", getMiddlename()=" + getMiddlename() + ", getLastname()="
-				+ getLastname() + ", getAddress_details()="
-				+ getAddress_details() + ", getDate_of_birth()="
-				+ getDate_of_birth() + ", getProfile_picture()="
-				+ getProfile_picture() + ", getPhone_number()="
-				+ getPhone_number() + ", getMobile_number()="
-				+ getMobile_number() + ", getGender_code()=" + getGender_code()
-				+ ", getNationality_code()=" + getNationality_code()
-				+ ", getAddress_city_code()=" + getAddress_city_code()
-				+ ", getAddress_region_code()=" + getAddress_region_code()
-				+ ", getAddress_country_code()=" + getAddress_country_code()
-				+ ", getMarital_status_code()=" + getMarital_status_code()
-				+ ", getSource_id()=" + getSource_id()
-				+ ", getRegistration_id()=" + getRegistration_id()
-				+ ", getActive()=" + getActive() + ", getFlag()=" + getFlag()
-				+ ", getActivated()=" + getActivated()
-				+ ", getActivation_code()=" + getActivation_code()
-				+ ", getDate_created()=" + getDate_created()
-				+ ", getDate_last_login()=" + getDate_last_login()
-				+ ", getDate_activated()=" + getDate_activated()
-				+ ", hashCode()=" + hashCode() + ", getClass()=" + getClass()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", date_of_birth=" + date_of_birth + "]";
 	}
 }
