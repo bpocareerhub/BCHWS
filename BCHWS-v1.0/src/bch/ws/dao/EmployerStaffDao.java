@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import bch.ws.beans.Users;
 import bch.ws.interfaces.CRUD;
 import bch.ws.interfaces.DataAccessObject;
@@ -40,7 +42,7 @@ public class EmployerStaffDao extends DataAccessObject implements CRUD {
 		Users user = null;
 		
 		try {
-			String sql = "SELECT u.user_id,u.group_id,u.parent_user_id,u.account_type_id,u.email,u.password,up.source_id,up.firstname, up.middlename, up.lastname, up.alternate_email, unix_timestamp(u.date_created) as date_created, up.profile_picture,";
+			String sql = "Select u.user_id,u.group_id,u.parent_user_id,u.account_type_id,u.email,u.password,up.source_id,up.firstname, up.middlename, up.lastname, up.alternate_email, unix_timestamp(u.date_created) as date_created, up.profile_picture,";
 			       sql += " unix_timestamp(up.date_of_birth) as date_of_birth, up.date_modified, up.gender_code, up.nationality_code, up.phone_number, up.mobile_number, up.address_details, up.address_city_code, up.address_region_code, up.address_country_code, up.marital_status_code";
 				   sql += " FROM `user_profile` AS up";
 				   sql += " INNER JOIN `users` AS u ON up.user_id = u.user_id"; 
@@ -65,8 +67,26 @@ public class EmployerStaffDao extends DataAccessObject implements CRUD {
 
 	@Override
 	public boolean updateRecord(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		try {
+			Users user = (Users) obj;
+			String sql = "Update user_profile SET firstname=?,lastname=?,phone_number=?,mobile_number=?,alternate_email=? where user_id=?";
+			PreparedStatement ps = (PreparedStatement) this.getDatabase().getConnection().prepareStatement(sql);
+			ps.setString(1, user.getFirstname());
+			ps.setString(2, user.getLastname());
+			ps.setString(3, user.getPhone_number());
+			ps.setString(4, user.getMobile_number());
+			ps.setString(5, user.getAlternate_email());
+			ps.setLong(6, user.getUser_id());
+			int updated = ps.executeUpdate();
+				if(updated > 0) {
+					success = true;
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
 	}
 
 	@Override
@@ -109,10 +129,24 @@ public class EmployerStaffDao extends DataAccessObject implements CRUD {
 		return purchasedProfiles;	
 	}
 	
-	
-	public ArrayList<?> retreiveAllCareerPost(int id) {
-		return null;
+	public boolean uploadProfilePicture(Object obj) {
+		
+		boolean  success = false;
+		try {
+			Users user = (Users) obj;
+			String sql = "Update user_profile SET profile_picture=? where user_id=?";
+			PreparedStatement ps = (PreparedStatement) this.getDatabase().getConnection().prepareStatement(sql);
+			ps.setString(1, user.getProfile_picture());
+			ps.setLong(2, user.getUser_id());
+			int updated = ps.executeUpdate();
+				if(updated > 0) {
+					success = true;
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return  success;
 	}
 	
-
 }
