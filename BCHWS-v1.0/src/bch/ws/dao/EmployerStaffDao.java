@@ -3,6 +3,7 @@ package bch.ws.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -14,7 +15,7 @@ import bch.ws.interfaces.DataAccessObject;
 public class EmployerStaffDao extends DataAccessObject implements CRUD {
 
 	@Override
-	public ArrayList<Users> retrieveAll() {
+	public List<?> retrieveAll() {
 		// TODO Auto-generated method stub
 		ArrayList<Users> employerStaff = new ArrayList<Users>();
 		

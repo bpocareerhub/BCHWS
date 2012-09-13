@@ -1,11 +1,11 @@
 package bch.ws.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import com.mysql.jdbc.PreparedStatement;
+import java.util.List;
 
 import bch.ws.beans.Users;
 import bch.ws.interfaces.CRUD;
@@ -14,7 +14,7 @@ import bch.ws.interfaces.DataAccessObject;
 public class UsersDao extends DataAccessObject implements CRUD {
 
 	@Override
-	public ArrayList<Users> retrieveAll() {
+	public List<?> retrieveAll() {
 		ArrayList<Users> users = new ArrayList<Users>();
 		
 			String sql = "select * from users";

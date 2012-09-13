@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bch</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <mapping class="bch.hb.mappings.AccountType"/>
+        <mapping class="bch.hb.mappings.AccountTypeRight"/>
+        <mapping class="bch.hb.mappings.AccountTypeRightPK"/>
+        <mapping class="bch.hb.mappings.Assessment"/>
+        <mapping class="bch.hb.mappings.AssessmentExam"/>
+        <mapping class="bch.hb.mappings.AssessmentExamsQa"/>
+        <mapping class="bch.hb.mappings.AssessmentUserAnswer"/>
+        <mapping class="bch.hb.mappings.Banner"/>
+        <mapping class="bch.hb.mappings.CareerApplication"/>
+        <mapping class="bch.hb.mappings.CareerApplicationRemark"/>
+        <mapping class="bch.hb.mappings.CareerApplicationScheduledInterview"/>
+        <mapping class="bch.hb.mappings.CareerPost"/>
+        <mapping class="bch.hb.mappings.Client"/>
+        <mapping class="bch.hb.mappings.EmployerPurchasedProfile"/>
+        <mapping class="bch.hb.mappings.EmployerPurchasedProfilePK"/>
+        <mapping class="bch.hb.mappings.Group"/>
+        <mapping class="bch.hb.mappings.PartnerRegistrationLink"/>
+        <mapping class="bch.hb.mappings.Requisition"/>
+        <mapping class="bch.hb.mappings.ScheduledTask"/>
+        <mapping class="bch.hb.mappings.Transaction"/>
+        <mapping class="bch.hb.mappings.User"/>
+        <mapping class="bch.hb.mappings.UserDetail"/>
+        <mapping class="bch.hb.mappings.UserEducationalBackground"/>
+        <mapping class="bch.hb.mappings.UserReference"/>
+        <mapping class="bch.hb.mappings.UserTechnicalSkill"/>
+        <mapping class="bch.hb.mappings.UserWorkExperience"/>
+    </session-factory>
+</hibernate-configuration>

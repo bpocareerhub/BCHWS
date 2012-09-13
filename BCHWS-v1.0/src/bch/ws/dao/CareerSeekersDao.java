@@ -3,7 +3,7 @@ package bch.ws.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 
 import bch.ws.beans.UserDetails;
 import bch.ws.interfaces.CRUD;
@@ -12,7 +12,7 @@ import bch.ws.interfaces.DataAccessObject;
 public class CareerSeekersDao extends DataAccessObject implements CRUD {
 
 	@Override
-	public ArrayList<?> retrieveAll() {
+	public List<?> retrieveAll() {
 		return null;
 	}
 
