@@ -21,4 +21,10 @@ public abstract class HBDataAccessObject {
 		this.session = session;
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		this.session.close();
+	}
+	
+	
 }

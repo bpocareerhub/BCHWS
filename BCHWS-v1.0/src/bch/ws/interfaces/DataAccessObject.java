@@ -44,6 +44,4 @@ public abstract class DataAccessObject {
 		return this.getDatabase().getConnection().createStatement();
 	}
 	
-	
-	
 }
