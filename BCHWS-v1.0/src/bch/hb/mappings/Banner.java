@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class Banner implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="banner_id")
 	private int bannerId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Column(name="banner_picture")
 	private String bannerPicture;
@@ -41,10 +38,8 @@ public class Banner implements Serializable {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
-	@Column(name="title")
 	private String title;
 
 	@Column(name="url_link")
@@ -59,23 +54,23 @@ public class Banner implements Serializable {
 	}
 
 	public int getBannerId() {
-		return bannerId;
+		return this.bannerId;
 	}
 
 	public void setBannerId(int bannerId) {
 		this.bannerId = bannerId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public String getBannerPicture() {
-		return bannerPicture;
+		return this.bannerPicture;
 	}
 
 	public void setBannerPicture(String bannerPicture) {
@@ -83,7 +78,7 @@ public class Banner implements Serializable {
 	}
 
 	public String getBannerType() {
-		return bannerType;
+		return this.bannerType;
 	}
 
 	public void setBannerType(String bannerType) {
@@ -91,7 +86,7 @@ public class Banner implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -99,7 +94,7 @@ public class Banner implements Serializable {
 	}
 
 	public Date getDateExpiry() {
-		return dateExpiry;
+		return this.dateExpiry;
 	}
 
 	public void setDateExpiry(Date dateExpiry) {
@@ -107,23 +102,23 @@ public class Banner implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -131,7 +126,7 @@ public class Banner implements Serializable {
 	}
 
 	public String getUrlLink() {
-		return urlLink;
+		return this.urlLink;
 	}
 
 	public void setUrlLink(String urlLink) {
@@ -139,7 +134,7 @@ public class Banner implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

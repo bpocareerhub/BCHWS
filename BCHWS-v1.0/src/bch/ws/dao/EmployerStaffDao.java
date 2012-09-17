@@ -39,7 +39,7 @@ public class EmployerStaffDao extends DataAccessObject implements CRUD {
 	}
 
 	@Override
-	public Object retrieveById(int id) {
+	public Object retrieveById(long id) {
 		Users user = null;
 		
 		try {

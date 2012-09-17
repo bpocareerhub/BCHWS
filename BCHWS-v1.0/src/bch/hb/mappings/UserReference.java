@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class UserReference implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="reference_id")
 	private int referenceId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Column(name="company_name")
 	private String companyName;
@@ -34,16 +31,12 @@ public class UserReference implements Serializable {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Column(name="email")
 	private String email;
 
-	@Column(name="firstname")
 	private String firstname;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
-	@Column(name="lastname")
 	private String lastname;
 
 	@Column(name="mobile_number")
@@ -55,7 +48,6 @@ public class UserReference implements Serializable {
 	@Column(name="position_title")
 	private String positionTitle;
 
-	@Column(name="relationship")
 	private String relationship;
 
 	@Column(name="skype_id")
@@ -70,23 +62,23 @@ public class UserReference implements Serializable {
 	}
 
 	public int getReferenceId() {
-		return referenceId;
+		return this.referenceId;
 	}
 
 	public void setReferenceId(int referenceId) {
 		this.referenceId = referenceId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public String getCompanyName() {
-		return companyName;
+		return this.companyName;
 	}
 
 	public void setCompanyName(String companyName) {
@@ -94,7 +86,7 @@ public class UserReference implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -102,7 +94,7 @@ public class UserReference implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
@@ -110,7 +102,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -118,23 +110,23 @@ public class UserReference implements Serializable {
 	}
 
 	public String getFirstname() {
-		return firstname;
+		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public String getLastname() {
-		return lastname;
+		return this.lastname;
 	}
 
 	public void setLastname(String lastname) {
@@ -142,7 +134,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getMobileNumber() {
-		return mobileNumber;
+		return this.mobileNumber;
 	}
 
 	public void setMobileNumber(String mobileNumber) {
@@ -150,7 +142,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return this.phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
@@ -158,7 +150,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getPositionTitle() {
-		return positionTitle;
+		return this.positionTitle;
 	}
 
 	public void setPositionTitle(String positionTitle) {
@@ -166,7 +158,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getRelationship() {
-		return relationship;
+		return this.relationship;
 	}
 
 	public void setRelationship(String relationship) {
@@ -174,7 +166,7 @@ public class UserReference implements Serializable {
 	}
 
 	public String getSkypeId() {
-		return skypeId;
+		return this.skypeId;
 	}
 
 	public void setSkypeId(String skypeId) {
@@ -182,10 +174,11 @@ public class UserReference implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 }

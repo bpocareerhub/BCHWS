@@ -16,12 +16,10 @@ public class Assessment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="assessment_id")
 	private int assessmentId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_created")
@@ -31,22 +29,21 @@ public class Assessment implements Serializable {
 	@Column(name="date_updated")
 	private Date dateUpdated;
 
-	@Column(name="description")
+	@Lob
 	private String description;
 
 	@Column(name="exam_ids")
 	private String examIds;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="random_exam")
-	private boolean randomExam;
+	private byte randomExam;
 
 	@Column(name="retake_interval_days")
 	private int retakeIntervalDays;
 
-	private boolean standard;
+	private byte standard;
 
 	@Column(name="time_limit")
 	private int timeLimit;
@@ -66,23 +63,23 @@ public class Assessment implements Serializable {
 	}
 
 	public int getAssessmentId() {
-		return assessmentId;
+		return this.assessmentId;
 	}
 
 	public void setAssessmentId(int assessmentId) {
 		this.assessmentId = assessmentId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -90,7 +87,7 @@ public class Assessment implements Serializable {
 	}
 
 	public Date getDateUpdated() {
-		return dateUpdated;
+		return this.dateUpdated;
 	}
 
 	public void setDateUpdated(Date dateUpdated) {
@@ -98,7 +95,7 @@ public class Assessment implements Serializable {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
@@ -106,47 +103,47 @@ public class Assessment implements Serializable {
 	}
 
 	public String getExamIds() {
-		return examIds;
+		return this.examIds;
 	}
 
 	public void setExamIds(String examIds) {
 		this.examIds = examIds;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
-	public boolean isRandomExam() {
-		return randomExam;
+	public byte getRandomExam() {
+		return this.randomExam;
 	}
 
-	public void setRandomExam(boolean randomExam) {
+	public void setRandomExam(byte randomExam) {
 		this.randomExam = randomExam;
 	}
 
 	public int getRetakeIntervalDays() {
-		return retakeIntervalDays;
+		return this.retakeIntervalDays;
 	}
 
 	public void setRetakeIntervalDays(int retakeIntervalDays) {
 		this.retakeIntervalDays = retakeIntervalDays;
 	}
 
-	public boolean isStandard() {
-		return standard;
+	public byte getStandard() {
+		return this.standard;
 	}
 
-	public void setStandard(boolean standard) {
+	public void setStandard(byte standard) {
 		this.standard = standard;
 	}
 
 	public int getTimeLimit() {
-		return timeLimit;
+		return this.timeLimit;
 	}
 
 	public void setTimeLimit(int timeLimit) {
@@ -154,7 +151,7 @@ public class Assessment implements Serializable {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -162,21 +159,19 @@ public class Assessment implements Serializable {
 	}
 
 	public List<AssessmentUserAnswer> getAssessmentUserAnswers() {
-		return assessmentUserAnswers;
+		return this.assessmentUserAnswers;
 	}
 
-	public void setAssessmentUserAnswers(
-			List<AssessmentUserAnswer> assessmentUserAnswers) {
+	public void setAssessmentUserAnswers(List<AssessmentUserAnswer> assessmentUserAnswers) {
 		this.assessmentUserAnswers = assessmentUserAnswers;
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	
 }

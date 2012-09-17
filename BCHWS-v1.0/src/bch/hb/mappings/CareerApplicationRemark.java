@@ -15,11 +15,10 @@ public class CareerApplicationRemark implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="remark_id")
 	private int remarkId;
 
-	private boolean active;
+	private byte active;
 
 	@Column(name="application_id")
 	private int applicationId;
@@ -34,8 +33,9 @@ public class CareerApplicationRemark implements Serializable {
 	@Column(name="date_created")
 	private Date dateCreated;
 
-	private boolean flag;
+	private byte flag;
 
+	@Lob
 	private String remark;
 
 	@Column(name="reply_to_remark_id")
@@ -52,11 +52,11 @@ public class CareerApplicationRemark implements Serializable {
 		this.remarkId = remarkId;
 	}
 
-	public boolean isActive() {
+	public byte getActive() {
 		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
@@ -92,15 +92,15 @@ public class CareerApplicationRemark implements Serializable {
 		this.dateCreated = dateCreated;
 	}
 
-	public Object getFlag() {
+	public byte getFlag() {
 		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
-	public Object getRemark() {
+	public String getRemark() {
 		return this.remark;
 	}
 

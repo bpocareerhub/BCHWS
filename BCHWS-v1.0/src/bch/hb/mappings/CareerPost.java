@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,16 +15,15 @@ public class CareerPost implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="career_id")
 	private int careerId;
 
 	@Column(name="academic_code")
 	private String academicCode;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
+	@Lob
 	@Column(name="career_description")
 	private String careerDescription;
 
@@ -53,14 +51,13 @@ public class CareerPost implements Serializable {
 	@Column(name="employment_type_id")
 	private int employmentTypeId;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="fresh_graduate")
-	private boolean freshGraduate;
+	private byte freshGraduate;
 
 	@Column(name="hide_company_details")
-	private boolean hideCompanyDetails;
+	private byte hideCompanyDetails;
 
 	@Column(name="industry_id")
 	private int industryId;
@@ -68,14 +65,12 @@ public class CareerPost implements Serializable {
 	@Column(name="industry_sector_id")
 	private int industrySectorId;
 
-	@Column(name="keywords")
 	private String keywords;
 
 	@Column(name="max_repost")
 	private int maxRepost;
 
-	@Column(name="negotiable")
-	private boolean negotiable;
+	private byte negotiable;
 
 	@Column(name="parent_career_id")
 	private int parentCareerId;
@@ -86,8 +81,7 @@ public class CareerPost implements Serializable {
 	@Column(name="region_city_code")
 	private String regionCityCode;
 
-	@Column(name="repost")
-	private boolean repost;
+	private byte repost;
 
 	@Column(name="repost_interval_days")
 	private int repostIntervalDays;
@@ -116,7 +110,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getCareerId() {
-		return careerId;
+		return this.careerId;
 	}
 
 	public void setCareerId(int careerId) {
@@ -124,23 +118,23 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getAcademicCode() {
-		return academicCode;
+		return this.academicCode;
 	}
 
 	public void setAcademicCode(String academicCode) {
 		this.academicCode = academicCode;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public String getCareerDescription() {
-		return careerDescription;
+		return this.careerDescription;
 	}
 
 	public void setCareerDescription(String careerDescription) {
@@ -148,7 +142,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getCareerPostStatusId() {
-		return careerPostStatusId;
+		return this.careerPostStatusId;
 	}
 
 	public void setCareerPostStatusId(int careerPostStatusId) {
@@ -156,7 +150,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getCareerTitle() {
-		return careerTitle;
+		return this.careerTitle;
 	}
 
 	public void setCareerTitle(String careerTitle) {
@@ -164,7 +158,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getClientId() {
-		return clientId;
+		return this.clientId;
 	}
 
 	public void setClientId(int clientId) {
@@ -172,7 +166,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -180,7 +174,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public Date getDateExpire() {
-		return dateExpire;
+		return this.dateExpire;
 	}
 
 	public void setDateExpire(Date dateExpire) {
@@ -188,7 +182,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public Date getDatePost() {
-		return datePost;
+		return this.datePost;
 	}
 
 	public void setDatePost(Date datePost) {
@@ -196,39 +190,39 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getEmploymentTypeId() {
-		return employmentTypeId;
+		return this.employmentTypeId;
 	}
 
 	public void setEmploymentTypeId(int employmentTypeId) {
 		this.employmentTypeId = employmentTypeId;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
-	public boolean isFreshGraduate() {
-		return freshGraduate;
+	public byte getFreshGraduate() {
+		return this.freshGraduate;
 	}
 
-	public void setFreshGraduate(boolean freshGraduate) {
+	public void setFreshGraduate(byte freshGraduate) {
 		this.freshGraduate = freshGraduate;
 	}
 
-	public boolean isHideCompanyDetails() {
-		return hideCompanyDetails;
+	public byte getHideCompanyDetails() {
+		return this.hideCompanyDetails;
 	}
 
-	public void setHideCompanyDetails(boolean hideCompanyDetails) {
+	public void setHideCompanyDetails(byte hideCompanyDetails) {
 		this.hideCompanyDetails = hideCompanyDetails;
 	}
 
 	public int getIndustryId() {
-		return industryId;
+		return this.industryId;
 	}
 
 	public void setIndustryId(int industryId) {
@@ -236,7 +230,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getIndustrySectorId() {
-		return industrySectorId;
+		return this.industrySectorId;
 	}
 
 	public void setIndustrySectorId(int industrySectorId) {
@@ -244,7 +238,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getKeywords() {
-		return keywords;
+		return this.keywords;
 	}
 
 	public void setKeywords(String keywords) {
@@ -252,23 +246,23 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getMaxRepost() {
-		return maxRepost;
+		return this.maxRepost;
 	}
 
 	public void setMaxRepost(int maxRepost) {
 		this.maxRepost = maxRepost;
 	}
 
-	public boolean isNegotiable() {
-		return negotiable;
+	public byte getNegotiable() {
+		return this.negotiable;
 	}
 
-	public void setNegotiable(boolean negotiable) {
+	public void setNegotiable(byte negotiable) {
 		this.negotiable = negotiable;
 	}
 
 	public int getParentCareerId() {
-		return parentCareerId;
+		return this.parentCareerId;
 	}
 
 	public void setParentCareerId(int parentCareerId) {
@@ -276,7 +270,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getPositionLevelId() {
-		return positionLevelId;
+		return this.positionLevelId;
 	}
 
 	public void setPositionLevelId(int positionLevelId) {
@@ -284,23 +278,23 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getRegionCityCode() {
-		return regionCityCode;
+		return this.regionCityCode;
 	}
 
 	public void setRegionCityCode(String regionCityCode) {
 		this.regionCityCode = regionCityCode;
 	}
 
-	public boolean isRepost() {
-		return repost;
+	public byte getRepost() {
+		return this.repost;
 	}
 
-	public void setRepost(boolean repost) {
+	public void setRepost(byte repost) {
 		this.repost = repost;
 	}
 
 	public int getRepostIntervalDays() {
-		return repostIntervalDays;
+		return this.repostIntervalDays;
 	}
 
 	public void setRepostIntervalDays(int repostIntervalDays) {
@@ -308,7 +302,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public int getRequireAssessmentId() {
-		return requireAssessmentId;
+		return this.requireAssessmentId;
 	}
 
 	public void setRequireAssessmentId(int requireAssessmentId) {
@@ -316,7 +310,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getRequireQuestion() {
-		return requireQuestion;
+		return this.requireQuestion;
 	}
 
 	public void setRequireQuestion(String requireQuestion) {
@@ -324,7 +318,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getSalaryCode() {
-		return salaryCode;
+		return this.salaryCode;
 	}
 
 	public void setSalaryCode(String salaryCode) {
@@ -332,7 +326,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getSpecializationId() {
-		return specializationId;
+		return this.specializationId;
 	}
 
 	public void setSpecializationId(String specializationId) {
@@ -340,7 +334,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public String getYearOfExperienceCode() {
-		return yearOfExperienceCode;
+		return this.yearOfExperienceCode;
 	}
 
 	public void setYearOfExperienceCode(String yearOfExperienceCode) {
@@ -348,7 +342,7 @@ public class CareerPost implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

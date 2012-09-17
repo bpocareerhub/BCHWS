@@ -1,3 +1,4 @@
+
 package bch.ws.dao;
 
 import java.sql.PreparedStatement;
@@ -38,7 +39,7 @@ public class UsersDao extends DataAccessObject implements CRUD {
 	}
 
 	@Override
-	public Users retrieveById(int id) {
+	public Users retrieveById(long id) {
 		Users user = null;
 		
 		try {

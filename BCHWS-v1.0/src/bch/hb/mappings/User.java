@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +16,8 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="user_id", insertable = false, updatable = false)
+	private long userId;
 
 	@Column(name="activated")
 	private boolean activated;
@@ -36,6 +34,7 @@ public class User implements Serializable {
 	@Column(name="address_country_code")
 	private String addressCountryCode;
 
+	@Lob
 	@Column(name="address_details")
 	private String addressDetails;
 
@@ -72,7 +71,10 @@ public class User implements Serializable {
 
 	@Column(name="gender_code")
 	private String genderCode;
-
+	
+	@Column(name="group_id")
+	private int groupId;
+	
 	@Column(name="lastname")
 	private String lastname;
 
@@ -148,29 +150,63 @@ public class User implements Serializable {
 	@JoinColumn(name="account_type_id")
 	private AccountType accountType;
 
-	//bi-directional many-to-one association to Client
-	@ManyToOne
-	@JoinColumn(name="client_id")
-	private Client client;
-
-	//bi-directional many-to-one association to Group
-	@ManyToOne
-	@JoinColumn(name="group_id")
-	private Group group;
+	//bi-directional many-to-many association to Client
+	@ManyToMany
+	@JoinTable(
+		name="clientuser_relationship"
+		, joinColumns={
+			@JoinColumn(name="user_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="client_id")
+			}
+		)
+	private List<Client> clients;
 
 	//bi-directional one-to-one association to UserDetail
 	@OneToOne
 	@JoinColumn(name="user_id", referencedColumnName="user_id")
 	private UserDetail userDetail;
 
-	public User() {
+	public User() {		
 	}
 
-	public int getUserId() {
+	public User(User user) {
+		this.userId = user.getUserId();
+		this.activated = user.isActivated();
+		this.activationCode = user.getActivationCode();
+		this.active = user.isActive();
+		this.addressCityCode = user.getAddressCityCode();
+		this.addressCountryCode = user.getAddressCountryCode();
+		this.addressDetails = user.getAddressDetails();
+		this.addressRegionCode = user.getAddressRegionCode();
+		this.alternateEmail = user.getAlternateEmail();
+		this.dateActivated = user.getDateActivated();
+		this.dateCreated = user.getDateCreated();
+		this.dateLastLogin = user.getDateLastLogin();
+		this.dateOfBirth = user.getDateOfBirth();
+		this.email = user.getEmail();
+		this.firstname = user.getFirstname();
+		this.flag = user.isFlag();
+		this.genderCode = user.getGenderCode();
+		this.groupId = user.getGroupId();
+		this.lastname = user.getLastname();
+		this.maritalStatusCode = user.getMaritalStatusCode();
+		this.middlename = user.getMiddlename();
+		this.mobileNumber = user.getMobileNumber();
+		this.nationalityCode = user.getNationalityCode();
+		this.password = user.getPassword();
+		this.phoneNumber = user.getPhoneNumber();
+		this.profilePicture = user.getProfilePicture();
+		this.registrationId = user.getRegistrationId();
+		this.sourceId = user.getSourceId();		
+	}
+
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -292,6 +328,14 @@ public class User implements Serializable {
 
 	public void setFlag(boolean flag) {
 		this.flag = flag;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int group) {
+		this.groupId = group;
 	}
 
 	public String getGenderCode() {
@@ -452,7 +496,8 @@ public class User implements Serializable {
 		return userTechnicalSkills;
 	}
 
-	public void setUserTechnicalSkills(List<UserTechnicalSkill> userTechnicalSkills) {
+	public void setUserTechnicalSkills(
+			List<UserTechnicalSkill> userTechnicalSkills) {
 		this.userTechnicalSkills = userTechnicalSkills;
 	}
 
@@ -460,7 +505,8 @@ public class User implements Serializable {
 		return userWorkExperiences;
 	}
 
-	public void setUserWorkExperiences(List<UserWorkExperience> userWorkExperiences) {
+	public void setUserWorkExperiences(
+			List<UserWorkExperience> userWorkExperiences) {
 		this.userWorkExperiences = userWorkExperiences;
 	}
 
@@ -472,20 +518,12 @@ public class User implements Serializable {
 		this.accountType = accountType;
 	}
 
-	public Client getClient() {
-		return client;
+	public List<Client> getClients() {
+		return clients;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Group getGroup() {
-		return group;
-	}
-
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
 
 	public UserDetail getUserDetail() {
@@ -494,6 +532,28 @@ public class User implements Serializable {
 
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (userId ^ (userId >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (userId != other.userId)
+			return false;
+		return true;
 	}
 
 }

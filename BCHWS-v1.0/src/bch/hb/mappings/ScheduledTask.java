@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class ScheduledTask implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="task_id")
 	private int taskId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="created_date")
@@ -31,8 +28,7 @@ public class ScheduledTask implements Serializable {
 	@Column(name="execute_date")
 	private Date executeDate;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="task_type_id")
 	private int taskTypeId;
@@ -44,23 +40,23 @@ public class ScheduledTask implements Serializable {
 	}
 
 	public int getTaskId() {
-		return taskId;
+		return this.taskId;
 	}
 
 	public void setTaskId(int taskId) {
 		this.taskId = taskId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public Date getCreatedDate() {
-		return createdDate;
+		return this.createdDate;
 	}
 
 	public void setCreatedDate(Date createdDate) {
@@ -68,23 +64,23 @@ public class ScheduledTask implements Serializable {
 	}
 
 	public Date getExecuteDate() {
-		return executeDate;
+		return this.executeDate;
 	}
 
 	public void setExecuteDate(Date executeDate) {
 		this.executeDate = executeDate;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public int getTaskTypeId() {
-		return taskTypeId;
+		return this.taskTypeId;
 	}
 
 	public void setTaskTypeId(int taskTypeId) {
@@ -92,7 +88,7 @@ public class ScheduledTask implements Serializable {
 	}
 
 	public int getTaskWithId() {
-		return taskWithId;
+		return this.taskWithId;
 	}
 
 	public void setTaskWithId(int taskWithId) {

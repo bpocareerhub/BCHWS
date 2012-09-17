@@ -14,7 +14,6 @@ public class AccountTypeRight implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="account_type_right_id")
 	private int accountTypeRightId;
 

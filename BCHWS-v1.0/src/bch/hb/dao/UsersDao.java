@@ -1,9 +1,11 @@
 package bch.hb.dao;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import bch.hb.mappings.User;
 import bch.ws.interfaces.CRUD;
@@ -13,28 +15,45 @@ public class UsersDao extends HBDataAccessObject implements CRUD {
 
 	@Override
 	public List<User> retrieveAll() {
-		
-		String sql = "from User users";
-		Query query = this.getSession().createQuery(sql);
-		
-		for(Iterator it = query.iterate(); it.hasNext();) {
+
+		List<User> users = new ArrayList<User>();
+		String hql = "from User users";
+		Query query = this.getSession().createQuery(hql);
+		query.setComment("All Users + " + hql);
+
+		for(Iterator<?> it = query.iterate(); it.hasNext();) {
 			User user = (User) it.next();
-			System.out.println(user.toString());
+			users.add(user);			
 		}
-		
-		return null;
+
+		return users;
 	}
 
 	@Override
-	public User retrieveById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User retrieveById(long id) {
+		String hql = "from User users where user_id = " + id;
+		Query query = this.getSession().createQuery(hql);
+		query.setMaxResults(1);
+
+		return (User) query.uniqueResult();
 	}
 
 	@Override
 	public boolean updateRecord(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		User u = (User) obj;
+		
+		if(u != null) {
+			try {
+				Transaction transaction = this.getSession().beginTransaction();
+				this.getSession().update(u);
+				transaction.commit();
+				success = true;
+			} catch (Exception ex) {
+				ex.printStackTrace();			
+			}
+		}
+		return success;
 	}
 
 	@Override

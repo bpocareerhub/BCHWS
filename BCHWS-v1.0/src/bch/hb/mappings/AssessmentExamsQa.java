@@ -15,12 +15,12 @@ public class AssessmentExamsQa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="qa_id")
 	private int qaId;
 
 	private int answers;
 
+	@Lob
 	private String choices;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -31,8 +31,9 @@ public class AssessmentExamsQa implements Serializable {
 	@Column(name="date_updated")
 	private Date dateUpdated;
 
-	private boolean flag;
+	private byte flag;
 
+	@Lob
 	private String question;
 
 	//bi-directional many-to-one association to User
@@ -83,11 +84,11 @@ public class AssessmentExamsQa implements Serializable {
 		this.dateUpdated = dateUpdated;
 	}
 
-	public boolean isFlag() {
+	public byte getFlag() {
 		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 

@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class AssessmentUserAnswer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="user_answer_id")
 	private int userAnswerId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Column(name="correct_items")
 	private int correctItems;
@@ -34,18 +31,16 @@ public class AssessmentUserAnswer implements Serializable {
 	@Column(name="date_started")
 	private Date dateStarted;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
-	@Column(name="score")
 	private int score;
 
-	@Column(name="submitted")
-	private boolean submitted;
+	private int submitted;
 
 	@Column(name="total_items")
 	private int totalItems;
 
+	@Lob
 	@Column(name="user_answers")
 	private String userAnswers;
 
@@ -68,23 +63,23 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public int getUserAnswerId() {
-		return userAnswerId;
+		return this.userAnswerId;
 	}
 
 	public void setUserAnswerId(int userAnswerId) {
 		this.userAnswerId = userAnswerId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public int getCorrectItems() {
-		return correctItems;
+		return this.correctItems;
 	}
 
 	public void setCorrectItems(int correctItems) {
@@ -92,7 +87,7 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public Date getDateEnd() {
-		return dateEnd;
+		return this.dateEnd;
 	}
 
 	public void setDateEnd(Date dateEnd) {
@@ -100,39 +95,39 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public Date getDateStarted() {
-		return dateStarted;
+		return this.dateStarted;
 	}
 
 	public void setDateStarted(Date dateStarted) {
 		this.dateStarted = dateStarted;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 
 	public void setScore(int score) {
 		this.score = score;
 	}
 
-	public boolean isSubmitted() {
-		return submitted;
+	public int getSubmitted() {
+		return this.submitted;
 	}
 
-	public void setSubmitted(boolean submitted) {
+	public void setSubmitted(int submitted) {
 		this.submitted = submitted;
 	}
 
 	public int getTotalItems() {
-		return totalItems;
+		return this.totalItems;
 	}
 
 	public void setTotalItems(int totalItems) {
@@ -140,7 +135,7 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public String getUserAnswers() {
-		return userAnswers;
+		return this.userAnswers;
 	}
 
 	public void setUserAnswers(String userAnswers) {
@@ -148,7 +143,7 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public AssessmentExam getAssessmentExam() {
-		return assessmentExam;
+		return this.assessmentExam;
 	}
 
 	public void setAssessmentExam(AssessmentExam assessmentExam) {
@@ -156,7 +151,7 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public Assessment getAssessment() {
-		return assessment;
+		return this.assessment;
 	}
 
 	public void setAssessment(Assessment assessment) {
@@ -164,7 +159,7 @@ public class AssessmentUserAnswer implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

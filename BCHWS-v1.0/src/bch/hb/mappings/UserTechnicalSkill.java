@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class UserTechnicalSkill implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="technical_skills_id")
 	private int technicalSkillsId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_created")
@@ -31,8 +28,7 @@ public class UserTechnicalSkill implements Serializable {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="proficiency_level_id")
 	private int proficiencyLevelId;
@@ -52,23 +48,23 @@ public class UserTechnicalSkill implements Serializable {
 	}
 
 	public int getTechnicalSkillsId() {
-		return technicalSkillsId;
+		return this.technicalSkillsId;
 	}
 
 	public void setTechnicalSkillsId(int technicalSkillsId) {
 		this.technicalSkillsId = technicalSkillsId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -76,23 +72,23 @@ public class UserTechnicalSkill implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public int getProficiencyLevelId() {
-		return proficiencyLevelId;
+		return this.proficiencyLevelId;
 	}
 
 	public void setProficiencyLevelId(int proficiencyLevelId) {
@@ -100,7 +96,7 @@ public class UserTechnicalSkill implements Serializable {
 	}
 
 	public String getSkillDescription() {
-		return skillDescription;
+		return this.skillDescription;
 	}
 
 	public void setSkillDescription(String skillDescription) {
@@ -108,7 +104,7 @@ public class UserTechnicalSkill implements Serializable {
 	}
 
 	public String getSkillName() {
-		return skillName;
+		return this.skillName;
 	}
 
 	public void setSkillName(String skillName) {
@@ -116,7 +112,7 @@ public class UserTechnicalSkill implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

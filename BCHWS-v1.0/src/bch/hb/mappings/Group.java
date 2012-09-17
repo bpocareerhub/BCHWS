@@ -3,8 +3,6 @@ package bch.hb.mappings;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the groups database table.
@@ -16,28 +14,20 @@ public class Group implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="group_id")
 	private int groupId;
 
-	@Column(name="description")
 	private String description;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
-	@Column(name="name")
 	private String name;
-
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="group")
-	private List<User> users;
 
 	public Group() {
 	}
 
 	public int getGroupId() {
-		return groupId;
+		return this.groupId;
 	}
 
 	public void setGroupId(int groupId) {
@@ -45,34 +35,26 @@ public class Group implements Serializable {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
 	}
 }

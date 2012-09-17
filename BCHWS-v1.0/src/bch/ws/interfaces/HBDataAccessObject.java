@@ -7,23 +7,13 @@ import bch.hb.models.FactoryInstance;
 
 public abstract class HBDataAccessObject {
 
-	private Session session;
-	private Transaction transaction;
+	private Session session;	
 	
-	public HBDataAccessObject() {
-		transaction = null;
+	public HBDataAccessObject() {		
 		this.setSession(FactoryInstance.getInstance().openSession());
 	}
 
-	public void createTransaction() {
-		this.setTransaction(this.getSession().beginTransaction());
-	}
-	
-	public void commitTransaction() {
-		this.getTransaction().commit();
-	}
-	
-	protected Session getSession() {
+	public Session getSession() {
 		return session;
 	}
 
@@ -31,12 +21,4 @@ public abstract class HBDataAccessObject {
 		this.session = session;
 	}
 
-	protected Transaction getTransaction() {
-		return transaction;
-	}
-
-	protected void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}
-	
 }

@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,11 +15,10 @@ public class UserDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="user_detail_id")
-	private int userDetailId;
+	private long userDetailId;
 
-	@Column(name="achievements")
+	@Lob
 	private String achievements;
 
 	@Column(name="availability_id")
@@ -41,20 +39,22 @@ public class UserDetail implements Serializable {
 	@Column(name="highest_academic_id")
 	private int highestAcademicId;
 
+	@Lob
 	@Column(name="lang_spoken")
 	private String langSpoken;
 
+	@Lob
 	@Column(name="lang_written")
 	private String langWritten;
 
-	@Column(name="languages")
+	@Lob
 	private String languages;
 
 	@Column(name="other_language")
 	private String otherLanguage;
 
 	@Column(name="possess_passport")
-	private boolean possessPassport;
+	private byte possessPassport;
 
 	@Column(name="preferred_employment_type_id")
 	private int preferredEmploymentTypeId;
@@ -94,23 +94,23 @@ public class UserDetail implements Serializable {
 	@Column(name="second_preferred_employment_type_id")
 	private int secondPreferredEmploymentTypeId;
 
-	@Column(name="skills")
+	@Lob
 	private String skills;
 
-	@Column(name="trainings")
+	@Lob
 	private String trainings;
 
 	@Column(name="willing_to_holidays_weekends")
-	private boolean willingToHolidaysWeekends;
+	private byte willingToHolidaysWeekends;
 
 	@Column(name="willing_to_relocate")
-	private boolean willingToRelocate;
+	private byte willingToRelocate;
 
 	@Column(name="willing_to_shift_schedules")
-	private boolean willingToShiftSchedules;
+	private byte willingToShiftSchedules;
 
 	@Column(name="willing_to_work_overseas")
-	private boolean willingToWorkOverseas;
+	private byte willingToWorkOverseas;
 
 	@Column(name="years_of_experience_id")
 	private int yearsOfExperienceId;
@@ -122,16 +122,16 @@ public class UserDetail implements Serializable {
 	public UserDetail() {
 	}
 
-	public int getUserDetailId() {
-		return userDetailId;
+	public long getUserDetailId() {
+		return this.userDetailId;
 	}
 
-	public void setUserDetailId(int userDetailId) {
+	public void setUserDetailId(long userDetailId) {
 		this.userDetailId = userDetailId;
 	}
 
 	public String getAchievements() {
-		return achievements;
+		return this.achievements;
 	}
 
 	public void setAchievements(String achievements) {
@@ -139,7 +139,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getAvailabilityId() {
-		return availabilityId;
+		return this.availabilityId;
 	}
 
 	public void setAvailabilityId(int availabilityId) {
@@ -147,7 +147,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public boolean isBackgroundCheck() {
-		return backgroundCheck;
+		return this.backgroundCheck;
 	}
 
 	public void setBackgroundCheck(boolean backgroundCheck) {
@@ -155,7 +155,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getCurrentEmploymentStatusId() {
-		return currentEmploymentStatusId;
+		return this.currentEmploymentStatusId;
 	}
 
 	public void setCurrentEmploymentStatusId(int currentEmploymentStatusId) {
@@ -163,7 +163,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getExpectedSalary() {
-		return expectedSalary;
+		return this.expectedSalary;
 	}
 
 	public void setExpectedSalary(int expectedSalary) {
@@ -171,7 +171,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getExpectedSalaryCurrencyId() {
-		return expectedSalaryCurrencyId;
+		return this.expectedSalaryCurrencyId;
 	}
 
 	public void setExpectedSalaryCurrencyId(int expectedSalaryCurrencyId) {
@@ -179,7 +179,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getHighestAcademicId() {
-		return highestAcademicId;
+		return this.highestAcademicId;
 	}
 
 	public void setHighestAcademicId(int highestAcademicId) {
@@ -187,7 +187,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getLangSpoken() {
-		return langSpoken;
+		return this.langSpoken;
 	}
 
 	public void setLangSpoken(String langSpoken) {
@@ -195,7 +195,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getLangWritten() {
-		return langWritten;
+		return this.langWritten;
 	}
 
 	public void setLangWritten(String langWritten) {
@@ -203,7 +203,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getLanguages() {
-		return languages;
+		return this.languages;
 	}
 
 	public void setLanguages(String languages) {
@@ -211,23 +211,23 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getOtherLanguage() {
-		return otherLanguage;
+		return this.otherLanguage;
 	}
 
 	public void setOtherLanguage(String otherLanguage) {
 		this.otherLanguage = otherLanguage;
 	}
 
-	public boolean isPossessPassport() {
-		return possessPassport;
+	public byte getPossessPassport() {
+		return this.possessPassport;
 	}
 
-	public void setPossessPassport(boolean possessPassport) {
+	public void setPossessPassport(byte possessPassport) {
 		this.possessPassport = possessPassport;
 	}
 
 	public int getPreferredEmploymentTypeId() {
-		return preferredEmploymentTypeId;
+		return this.preferredEmploymentTypeId;
 	}
 
 	public void setPreferredEmploymentTypeId(int preferredEmploymentTypeId) {
@@ -235,7 +235,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getPreferredIndustryId() {
-		return preferredIndustryId;
+		return this.preferredIndustryId;
 	}
 
 	public void setPreferredIndustryId(int preferredIndustryId) {
@@ -243,7 +243,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getPreferredIndustrySectorId() {
-		return preferredIndustrySectorId;
+		return this.preferredIndustrySectorId;
 	}
 
 	public void setPreferredIndustrySectorId(int preferredIndustrySectorId) {
@@ -251,7 +251,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getPreferredSecondaryIndustryId() {
-		return preferredSecondaryIndustryId;
+		return this.preferredSecondaryIndustryId;
 	}
 
 	public void setPreferredSecondaryIndustryId(int preferredSecondaryIndustryId) {
@@ -259,34 +259,31 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getPreferredSecondaryIndustrySectorId() {
-		return preferredSecondaryIndustrySectorId;
+		return this.preferredSecondaryIndustrySectorId;
 	}
 
-	public void setPreferredSecondaryIndustrySectorId(
-			int preferredSecondaryIndustrySectorId) {
+	public void setPreferredSecondaryIndustrySectorId(int preferredSecondaryIndustrySectorId) {
 		this.preferredSecondaryIndustrySectorId = preferredSecondaryIndustrySectorId;
 	}
 
 	public String getPreferredWorkLocationRegionCityId() {
-		return preferredWorkLocationRegionCityId;
+		return this.preferredWorkLocationRegionCityId;
 	}
 
-	public void setPreferredWorkLocationRegionCityId(
-			String preferredWorkLocationRegionCityId) {
+	public void setPreferredWorkLocationRegionCityId(String preferredWorkLocationRegionCityId) {
 		this.preferredWorkLocationRegionCityId = preferredWorkLocationRegionCityId;
 	}
 
 	public String getPreferredWorkLocationRegionCityIds() {
-		return preferredWorkLocationRegionCityIds;
+		return this.preferredWorkLocationRegionCityIds;
 	}
 
-	public void setPreferredWorkLocationRegionCityIds(
-			String preferredWorkLocationRegionCityIds) {
+	public void setPreferredWorkLocationRegionCityIds(String preferredWorkLocationRegionCityIds) {
 		this.preferredWorkLocationRegionCityIds = preferredWorkLocationRegionCityIds;
 	}
 
 	public int getRecentPositionLevelId() {
-		return recentPositionLevelId;
+		return this.recentPositionLevelId;
 	}
 
 	public void setRecentPositionLevelId(int recentPositionLevelId) {
@@ -294,7 +291,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public Date getResumeDateModified() {
-		return resumeDateModified;
+		return this.resumeDateModified;
 	}
 
 	public void setResumeDateModified(Date resumeDateModified) {
@@ -302,7 +299,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public Date getResumeDateUpload() {
-		return resumeDateUpload;
+		return this.resumeDateUpload;
 	}
 
 	public void setResumeDateUpload(Date resumeDateUpload) {
@@ -310,7 +307,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getResumeFilename() {
-		return resumeFilename;
+		return this.resumeFilename;
 	}
 
 	public void setResumeFilename(String resumeFilename) {
@@ -318,16 +315,15 @@ public class UserDetail implements Serializable {
 	}
 
 	public int getSecondPreferredEmploymentTypeId() {
-		return secondPreferredEmploymentTypeId;
+		return this.secondPreferredEmploymentTypeId;
 	}
 
-	public void setSecondPreferredEmploymentTypeId(
-			int secondPreferredEmploymentTypeId) {
+	public void setSecondPreferredEmploymentTypeId(int secondPreferredEmploymentTypeId) {
 		this.secondPreferredEmploymentTypeId = secondPreferredEmploymentTypeId;
 	}
 
 	public String getSkills() {
-		return skills;
+		return this.skills;
 	}
 
 	public void setSkills(String skills) {
@@ -335,47 +331,47 @@ public class UserDetail implements Serializable {
 	}
 
 	public String getTrainings() {
-		return trainings;
+		return this.trainings;
 	}
 
 	public void setTrainings(String trainings) {
 		this.trainings = trainings;
 	}
 
-	public boolean isWillingToHolidaysWeekends() {
-		return willingToHolidaysWeekends;
+	public byte getWillingToHolidaysWeekends() {
+		return this.willingToHolidaysWeekends;
 	}
 
-	public void setWillingToHolidaysWeekends(boolean willingToHolidaysWeekends) {
+	public void setWillingToHolidaysWeekends(byte willingToHolidaysWeekends) {
 		this.willingToHolidaysWeekends = willingToHolidaysWeekends;
 	}
 
-	public boolean isWillingToRelocate() {
-		return willingToRelocate;
+	public byte getWillingToRelocate() {
+		return this.willingToRelocate;
 	}
 
-	public void setWillingToRelocate(boolean willingToRelocate) {
+	public void setWillingToRelocate(byte willingToRelocate) {
 		this.willingToRelocate = willingToRelocate;
 	}
 
-	public boolean isWillingToShiftSchedules() {
-		return willingToShiftSchedules;
+	public byte getWillingToShiftSchedules() {
+		return this.willingToShiftSchedules;
 	}
 
-	public void setWillingToShiftSchedules(boolean willingToShiftSchedules) {
+	public void setWillingToShiftSchedules(byte willingToShiftSchedules) {
 		this.willingToShiftSchedules = willingToShiftSchedules;
 	}
 
-	public boolean isWillingToWorkOverseas() {
-		return willingToWorkOverseas;
+	public byte getWillingToWorkOverseas() {
+		return this.willingToWorkOverseas;
 	}
 
-	public void setWillingToWorkOverseas(boolean willingToWorkOverseas) {
+	public void setWillingToWorkOverseas(byte willingToWorkOverseas) {
 		this.willingToWorkOverseas = willingToWorkOverseas;
 	}
 
 	public int getYearsOfExperienceId() {
-		return yearsOfExperienceId;
+		return this.yearsOfExperienceId;
 	}
 
 	public void setYearsOfExperienceId(int yearsOfExperienceId) {
@@ -383,7 +379,7 @@ public class UserDetail implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

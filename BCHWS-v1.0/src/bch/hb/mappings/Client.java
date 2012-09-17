@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -17,17 +16,15 @@ public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="client_id")
 	private int clientId;
 
 	@Column(name="account_owner_user_id")
 	private int accountOwnerUserId;
-	
-	@Column(name="active")
-	private boolean active;
 
-	@Column(name="address")
+	private int active;
+
+	@Lob
 	private String address;
 
 	@Column(name="address_city_code")
@@ -50,20 +47,18 @@ public class Client implements Serializable {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Column(name="description")
+	@Lob
 	private String description;
 
 	@Column(name="download_credits")
 	private int downloadCredits;
 
-	@Column(name="facebook")
 	private String facebook;
 
 	@Column(name="fax_number")
 	private String faxNumber;
 
-	@Column(name="flag")
-	private boolean flag;
+	private int flag;
 
 	@Column(name="industry_id")
 	private int industryId;
@@ -71,28 +66,22 @@ public class Client implements Serializable {
 	@Column(name="industry_sector_id")
 	private int industrySectorId;
 
-	@Column(name="linkedin")
 	private String linkedin;
 
-	@Column(name="logo")
 	private String logo;
 
-	@Column(name="name")
 	private String name;
 
 	@Column(name="office_phone_number")
 	private String officePhoneNumber;
 
-	@Column(name="priority")
-	private boolean priority;
+	private int priority;
 
 	@Column(name="sec_number")
 	private String secNumber;
 
-	@Column(name="tin")
 	private String tin;
 
-	@Column(name="twitter")
 	private String twitter;
 
 	@Column(name="url_website")
@@ -101,15 +90,15 @@ public class Client implements Serializable {
 	@Column(name="youtube_link")
 	private String youtubeLink;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="client")
+	//bi-directional many-to-many association to User
+	@ManyToMany(mappedBy="clients")
 	private List<User> users;
 
 	public Client() {
 	}
 
 	public int getClientId() {
-		return clientId;
+		return this.clientId;
 	}
 
 	public void setClientId(int clientId) {
@@ -117,23 +106,23 @@ public class Client implements Serializable {
 	}
 
 	public int getAccountOwnerUserId() {
-		return accountOwnerUserId;
+		return this.accountOwnerUserId;
 	}
 
 	public void setAccountOwnerUserId(int accountOwnerUserId) {
 		this.accountOwnerUserId = accountOwnerUserId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public int getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(int active) {
 		this.active = active;
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
@@ -141,7 +130,7 @@ public class Client implements Serializable {
 	}
 
 	public String getAddressCityCode() {
-		return addressCityCode;
+		return this.addressCityCode;
 	}
 
 	public void setAddressCityCode(String addressCityCode) {
@@ -149,7 +138,7 @@ public class Client implements Serializable {
 	}
 
 	public int getCareerpostCredits() {
-		return careerpostCredits;
+		return this.careerpostCredits;
 	}
 
 	public void setCareerpostCredits(int careerpostCredits) {
@@ -157,7 +146,7 @@ public class Client implements Serializable {
 	}
 
 	public int getClientTypeId() {
-		return clientTypeId;
+		return this.clientTypeId;
 	}
 
 	public void setClientTypeId(int clientTypeId) {
@@ -165,7 +154,7 @@ public class Client implements Serializable {
 	}
 
 	public String getCountryCode() {
-		return countryCode;
+		return this.countryCode;
 	}
 
 	public void setCountryCode(String countryCode) {
@@ -173,7 +162,7 @@ public class Client implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -181,7 +170,7 @@ public class Client implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
@@ -189,7 +178,7 @@ public class Client implements Serializable {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
@@ -197,7 +186,7 @@ public class Client implements Serializable {
 	}
 
 	public int getDownloadCredits() {
-		return downloadCredits;
+		return this.downloadCredits;
 	}
 
 	public void setDownloadCredits(int downloadCredits) {
@@ -205,7 +194,7 @@ public class Client implements Serializable {
 	}
 
 	public String getFacebook() {
-		return facebook;
+		return this.facebook;
 	}
 
 	public void setFacebook(String facebook) {
@@ -213,23 +202,23 @@ public class Client implements Serializable {
 	}
 
 	public String getFaxNumber() {
-		return faxNumber;
+		return this.faxNumber;
 	}
 
 	public void setFaxNumber(String faxNumber) {
 		this.faxNumber = faxNumber;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public int getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(int flag) {
 		this.flag = flag;
 	}
 
 	public int getIndustryId() {
-		return industryId;
+		return this.industryId;
 	}
 
 	public void setIndustryId(int industryId) {
@@ -237,7 +226,7 @@ public class Client implements Serializable {
 	}
 
 	public int getIndustrySectorId() {
-		return industrySectorId;
+		return this.industrySectorId;
 	}
 
 	public void setIndustrySectorId(int industrySectorId) {
@@ -245,7 +234,7 @@ public class Client implements Serializable {
 	}
 
 	public String getLinkedin() {
-		return linkedin;
+		return this.linkedin;
 	}
 
 	public void setLinkedin(String linkedin) {
@@ -253,7 +242,7 @@ public class Client implements Serializable {
 	}
 
 	public String getLogo() {
-		return logo;
+		return this.logo;
 	}
 
 	public void setLogo(String logo) {
@@ -261,7 +250,7 @@ public class Client implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -269,23 +258,23 @@ public class Client implements Serializable {
 	}
 
 	public String getOfficePhoneNumber() {
-		return officePhoneNumber;
+		return this.officePhoneNumber;
 	}
 
 	public void setOfficePhoneNumber(String officePhoneNumber) {
 		this.officePhoneNumber = officePhoneNumber;
 	}
 
-	public boolean isPriority() {
-		return priority;
+	public int getPriority() {
+		return this.priority;
 	}
 
-	public void setPriority(boolean priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 
 	public String getSecNumber() {
-		return secNumber;
+		return this.secNumber;
 	}
 
 	public void setSecNumber(String secNumber) {
@@ -293,7 +282,7 @@ public class Client implements Serializable {
 	}
 
 	public String getTin() {
-		return tin;
+		return this.tin;
 	}
 
 	public void setTin(String tin) {
@@ -301,7 +290,7 @@ public class Client implements Serializable {
 	}
 
 	public String getTwitter() {
-		return twitter;
+		return this.twitter;
 	}
 
 	public void setTwitter(String twitter) {
@@ -309,7 +298,7 @@ public class Client implements Serializable {
 	}
 
 	public String getUrlWebsite() {
-		return urlWebsite;
+		return this.urlWebsite;
 	}
 
 	public void setUrlWebsite(String urlWebsite) {
@@ -317,7 +306,7 @@ public class Client implements Serializable {
 	}
 
 	public String getYoutubeLink() {
-		return youtubeLink;
+		return this.youtubeLink;
 	}
 
 	public void setYoutubeLink(String youtubeLink) {
@@ -325,7 +314,7 @@ public class Client implements Serializable {
 	}
 
 	public List<User> getUsers() {
-		return users;
+		return this.users;
 	}
 
 	public void setUsers(List<User> users) {

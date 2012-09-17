@@ -15,10 +15,10 @@ public class AccountType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="account_type_id")
 	private int accountTypeId;
 
+	@Lob
 	@Column(name="account_type_description")
 	private String accountTypeDescription;
 
@@ -28,19 +28,19 @@ public class AccountType implements Serializable {
 	@Column(name="group_id_restrictions")
 	private int groupIdRestrictions;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="accountType")
-	private List<User> users;
-
 	//bi-directional many-to-one association to AccountTypeRight
 	@OneToMany(mappedBy="accountType")
 	private List<AccountTypeRight> accountTypeRights;
+
+	//bi-directional many-to-one association to User
+	@OneToMany(mappedBy="accountType")
+	private List<User> users;
 
 	public AccountType() {
 	}
 
 	public int getAccountTypeId() {
-		return accountTypeId;
+		return this.accountTypeId;
 	}
 
 	public void setAccountTypeId(int accountTypeId) {
@@ -48,7 +48,7 @@ public class AccountType implements Serializable {
 	}
 
 	public String getAccountTypeDescription() {
-		return accountTypeDescription;
+		return this.accountTypeDescription;
 	}
 
 	public void setAccountTypeDescription(String accountTypeDescription) {
@@ -56,7 +56,7 @@ public class AccountType implements Serializable {
 	}
 
 	public String getAccountTypeName() {
-		return accountTypeName;
+		return this.accountTypeName;
 	}
 
 	public void setAccountTypeName(String accountTypeName) {
@@ -64,26 +64,27 @@ public class AccountType implements Serializable {
 	}
 
 	public int getGroupIdRestrictions() {
-		return groupIdRestrictions;
+		return this.groupIdRestrictions;
 	}
 
 	public void setGroupIdRestrictions(int groupIdRestrictions) {
 		this.groupIdRestrictions = groupIdRestrictions;
 	}
 
+	public List<AccountTypeRight> getAccountTypeRights() {
+		return this.accountTypeRights;
+	}
+
+	public void setAccountTypeRights(List<AccountTypeRight> accountTypeRights) {
+		this.accountTypeRights = accountTypeRights;
+	}
+
 	public List<User> getUsers() {
-		return users;
+		return this.users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
-	public List<AccountTypeRight> getAccountTypeRights() {
-		return accountTypeRights;
-	}
-
-	public void setAccountTypeRights(List<AccountTypeRight> accountTypeRights) {
-		this.accountTypeRights = accountTypeRights;
-	}
 }

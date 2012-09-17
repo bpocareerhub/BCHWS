@@ -17,7 +17,7 @@ public class CareerSeekersDao extends DataAccessObject implements CRUD {
 	}
 
 	@Override
-	public UserDetails retrieveById(int id) {
+	public UserDetails retrieveById(long id) {
 		UserDetails userDetail = new UserDetails();
 		
 		try {

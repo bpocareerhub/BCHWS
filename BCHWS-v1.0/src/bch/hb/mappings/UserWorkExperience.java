@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,12 +15,10 @@ public class UserWorkExperience implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="work_experience_id")
 	private int workExperienceId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Column(name="company_name")
 	private String companyName;
@@ -42,8 +39,7 @@ public class UserWorkExperience implements Serializable {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="industry_id")
 	private int industryId;
@@ -51,9 +47,11 @@ public class UserWorkExperience implements Serializable {
 	@Column(name="industry_sector_id")
 	private String industrySectorId;
 
+	@Lob
 	@Column(name="job_description")
 	private String jobDescription;
 
+	@Lob
 	@Column(name="job_title")
 	private String jobTitle;
 
@@ -67,8 +65,9 @@ public class UserWorkExperience implements Serializable {
 	private int positionLevelCode;
 
 	@Column(name="present_employment")
-	private boolean presentEmployment;
+	private byte presentEmployment;
 
+	@Lob
 	@Column(name="reason_for_leaving")
 	private String reasonForLeaving;
 
@@ -87,23 +86,23 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public int getWorkExperienceId() {
-		return workExperienceId;
+		return this.workExperienceId;
 	}
 
 	public void setWorkExperienceId(int workExperienceId) {
 		this.workExperienceId = workExperienceId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public String getCompanyName() {
-		return companyName;
+		return this.companyName;
 	}
 
 	public void setCompanyName(String companyName) {
@@ -111,7 +110,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -119,7 +118,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public Date getDateEmploymentFrom() {
-		return dateEmploymentFrom;
+		return this.dateEmploymentFrom;
 	}
 
 	public void setDateEmploymentFrom(Date dateEmploymentFrom) {
@@ -127,7 +126,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public Date getDateEmploymentTo() {
-		return dateEmploymentTo;
+		return this.dateEmploymentTo;
 	}
 
 	public void setDateEmploymentTo(Date dateEmploymentTo) {
@@ -135,23 +134,23 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public int getIndustryId() {
-		return industryId;
+		return this.industryId;
 	}
 
 	public void setIndustryId(int industryId) {
@@ -159,7 +158,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getIndustrySectorId() {
-		return industrySectorId;
+		return this.industrySectorId;
 	}
 
 	public void setIndustrySectorId(String industrySectorId) {
@@ -167,7 +166,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getJobDescription() {
-		return jobDescription;
+		return this.jobDescription;
 	}
 
 	public void setJobDescription(String jobDescription) {
@@ -175,7 +174,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getJobTitle() {
-		return jobTitle;
+		return this.jobTitle;
 	}
 
 	public void setJobTitle(String jobTitle) {
@@ -183,7 +182,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getOthersIndustry() {
-		return othersIndustry;
+		return this.othersIndustry;
 	}
 
 	public void setOthersIndustry(String othersIndustry) {
@@ -191,7 +190,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getOthersSpecialization() {
-		return othersSpecialization;
+		return this.othersSpecialization;
 	}
 
 	public void setOthersSpecialization(String othersSpecialization) {
@@ -199,23 +198,23 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public int getPositionLevelCode() {
-		return positionLevelCode;
+		return this.positionLevelCode;
 	}
 
 	public void setPositionLevelCode(int positionLevelCode) {
 		this.positionLevelCode = positionLevelCode;
 	}
 
-	public boolean isPresentEmployment() {
-		return presentEmployment;
+	public byte getPresentEmployment() {
+		return this.presentEmployment;
 	}
 
-	public void setPresentEmployment(boolean presentEmployment) {
+	public void setPresentEmployment(byte presentEmployment) {
 		this.presentEmployment = presentEmployment;
 	}
 
 	public String getReasonForLeaving() {
-		return reasonForLeaving;
+		return this.reasonForLeaving;
 	}
 
 	public void setReasonForLeaving(String reasonForLeaving) {
@@ -223,7 +222,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getSalaryCode() {
-		return salaryCode;
+		return this.salaryCode;
 	}
 
 	public void setSalaryCode(String salaryCode) {
@@ -231,7 +230,7 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public String getSpecializationCode() {
-		return specializationCode;
+		return this.specializationCode;
 	}
 
 	public void setSpecializationCode(String specializationCode) {
@@ -239,10 +238,11 @@ public class UserWorkExperience implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 }

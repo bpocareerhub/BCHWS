@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,21 +15,17 @@ public class Requisition implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="requisition_id")
 	private int requisitionId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_created")
 	private Date dateCreated;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
-	@Column(name="message")
 	private String message;
 
 	@Column(name="posted_by_user_id")
@@ -48,39 +43,39 @@ public class Requisition implements Serializable {
 	}
 
 	public int getRequisitionId() {
-		return requisitionId;
+		return this.requisitionId;
 	}
 
 	public void setRequisitionId(int requisitionId) {
 		this.requisitionId = requisitionId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public String getMessage() {
-		return message;
+		return this.message;
 	}
 
 	public void setMessage(String message) {
@@ -88,7 +83,7 @@ public class Requisition implements Serializable {
 	}
 
 	public int getPostedByUserId() {
-		return postedByUserId;
+		return this.postedByUserId;
 	}
 
 	public void setPostedByUserId(int postedByUserId) {
@@ -96,7 +91,7 @@ public class Requisition implements Serializable {
 	}
 
 	public int getReplyToRequisitionId() {
-		return replyToRequisitionId;
+		return this.replyToRequisitionId;
 	}
 
 	public void setReplyToRequisitionId(int replyToRequisitionId) {
@@ -104,7 +99,7 @@ public class Requisition implements Serializable {
 	}
 
 	public int getRequisitionType() {
-		return requisitionType;
+		return this.requisitionType;
 	}
 
 	public void setRequisitionType(int requisitionType) {
@@ -112,11 +107,11 @@ public class Requisition implements Serializable {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 }

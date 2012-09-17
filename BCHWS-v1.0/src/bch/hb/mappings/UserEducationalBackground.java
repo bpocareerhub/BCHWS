@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,17 +15,14 @@ public class UserEducationalBackground implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="educational_background_id")
 	private int educationalBackgroundId;
 
 	@Column(name="academic_id")
 	private int academicId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
-	@Column(name="course")
 	private String course;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -40,9 +36,9 @@ public class UserEducationalBackground implements Serializable {
 	@Column(name="field_of_study_code")
 	private String fieldOfStudyCode;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
+	@Lob
 	@Column(name="institution_name")
 	private String institutionName;
 
@@ -63,7 +59,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public int getEducationalBackgroundId() {
-		return educationalBackgroundId;
+		return this.educationalBackgroundId;
 	}
 
 	public void setEducationalBackgroundId(int educationalBackgroundId) {
@@ -71,23 +67,23 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public int getAcademicId() {
-		return academicId;
+		return this.academicId;
 	}
 
 	public void setAcademicId(int academicId) {
 		this.academicId = academicId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public String getCourse() {
-		return course;
+		return this.course;
 	}
 
 	public void setCourse(String course) {
@@ -95,7 +91,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -103,7 +99,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public Date getDateModified() {
-		return dateModified;
+		return this.dateModified;
 	}
 
 	public void setDateModified(Date dateModified) {
@@ -111,23 +107,23 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public String getFieldOfStudyCode() {
-		return fieldOfStudyCode;
+		return this.fieldOfStudyCode;
 	}
 
 	public void setFieldOfStudyCode(String fieldOfStudyCode) {
 		this.fieldOfStudyCode = fieldOfStudyCode;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public String getInstitutionName() {
-		return institutionName;
+		return this.institutionName;
 	}
 
 	public void setInstitutionName(String institutionName) {
@@ -135,7 +131,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public Date getPeriodFrom() {
-		return periodFrom;
+		return this.periodFrom;
 	}
 
 	public void setPeriodFrom(Date periodFrom) {
@@ -143,7 +139,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public Date getPeriodTo() {
-		return periodTo;
+		return this.periodTo;
 	}
 
 	public void setPeriodTo(Date periodTo) {
@@ -151,7 +147,7 @@ public class UserEducationalBackground implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {

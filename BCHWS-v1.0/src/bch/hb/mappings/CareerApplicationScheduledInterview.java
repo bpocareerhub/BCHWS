@@ -2,7 +2,6 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -16,18 +15,15 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="interview_id")
 	private int interviewId;
 
-	@Column(name="active")
-	private boolean active;
+	private byte active;
 
 	@Column(name="application_id")
 	private int applicationId;
 
-	@Column(name="cancelled")
-	private boolean cancelled;
+	private int cancelled;
 
 	@Column(name="client_id")
 	private int clientId;
@@ -43,55 +39,53 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	@Column(name="date_invitation")
 	private Date dateInvitation;
 
-	@Column(name="flag")
-	private boolean flag;
+	private byte flag;
 
 	@Column(name="inviting_user_id")
 	private int invitingUserId;
 
-	@Column(name="note")
+	@Lob
 	private String note;
 
-	@Column(name="rescheduled")
-	private boolean rescheduled;
+	private int rescheduled;
 
 	public CareerApplicationScheduledInterview() {
 	}
 
 	public int getInterviewId() {
-		return interviewId;
+		return this.interviewId;
 	}
 
 	public void setInterviewId(int interviewId) {
 		this.interviewId = interviewId;
 	}
 
-	public boolean isActive() {
-		return active;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(byte active) {
 		this.active = active;
 	}
 
 	public int getApplicationId() {
-		return applicationId;
+		return this.applicationId;
 	}
 
 	public void setApplicationId(int applicationId) {
 		this.applicationId = applicationId;
 	}
 
-	public boolean isCancelled() {
-		return cancelled;
+	public int getCancelled() {
+		return this.cancelled;
 	}
 
-	public void setCancelled(boolean cancelled) {
+	public void setCancelled(int cancelled) {
 		this.cancelled = cancelled;
 	}
 
 	public int getClientId() {
-		return clientId;
+		return this.clientId;
 	}
 
 	public void setClientId(int clientId) {
@@ -99,7 +93,7 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	}
 
 	public int getCreatedByUserId() {
-		return createdByUserId;
+		return this.createdByUserId;
 	}
 
 	public void setCreatedByUserId(int createdByUserId) {
@@ -107,7 +101,7 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return this.dateCreated;
 	}
 
 	public void setDateCreated(Date dateCreated) {
@@ -115,23 +109,23 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	}
 
 	public Date getDateInvitation() {
-		return dateInvitation;
+		return this.dateInvitation;
 	}
 
 	public void setDateInvitation(Date dateInvitation) {
 		this.dateInvitation = dateInvitation;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public byte getFlag() {
+		return this.flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(byte flag) {
 		this.flag = flag;
 	}
 
 	public int getInvitingUserId() {
-		return invitingUserId;
+		return this.invitingUserId;
 	}
 
 	public void setInvitingUserId(int invitingUserId) {
@@ -139,18 +133,19 @@ public class CareerApplicationScheduledInterview implements Serializable {
 	}
 
 	public String getNote() {
-		return note;
+		return this.note;
 	}
 
 	public void setNote(String note) {
 		this.note = note;
 	}
 
-	public boolean isRescheduled() {
-		return rescheduled;
+	public int getRescheduled() {
+		return this.rescheduled;
 	}
 
-	public void setRescheduled(boolean rescheduled) {
+	public void setRescheduled(int rescheduled) {
 		this.rescheduled = rescheduled;
 	}
+
 }
