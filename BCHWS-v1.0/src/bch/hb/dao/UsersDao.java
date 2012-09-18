@@ -16,7 +16,6 @@ public class UsersDao extends HBDataAccessObject {
 		List<User> users = new ArrayList<User>();
 		String hql = "from User users";
 		Query query = this.getSession().createQuery(hql);
-		query.setComment("All Users + " + hql);
 
 		for(Iterator<?> it = query.iterate(); it.hasNext();) {
 			User user = (User) it.next();

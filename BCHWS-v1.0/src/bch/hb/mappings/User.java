@@ -2,6 +2,7 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,9 @@ public class User implements Serializable {
 	@Column(name="activated")
 	private boolean activated;
 
+	@Column (name="account_type_id")
+	private int accountTypeId;
+	
 	@Column(name="activation_code")
 	private String activationCode;
 
@@ -144,11 +148,6 @@ public class User implements Serializable {
 	//bi-directional many-to-one association to UserWorkExperience
 	@OneToMany(mappedBy="user")
 	private List<UserWorkExperience> userWorkExperiences;
-
-	//bi-directional many-to-one association to AccountType
-	@ManyToOne
-	@JoinColumn(name="account_type_id")
-	private AccountType accountType;
 
 	//bi-directional many-to-many association to Client
 	@ManyToMany
@@ -505,17 +504,16 @@ public class User implements Serializable {
 		return userWorkExperiences;
 	}
 
-	public void setUserWorkExperiences(
-			List<UserWorkExperience> userWorkExperiences) {
+	public void setUserWorkExperiences(List<UserWorkExperience> userWorkExperiences) {
 		this.userWorkExperiences = userWorkExperiences;
 	}
 
-	public AccountType getAccountType() {
-		return accountType;
+	public int getAccountTypeId() {
+		return accountTypeId;
 	}
 
-	public void setAccountType(AccountType accountType) {
-		this.accountType = accountType;
+	public void setAccountTypeId(int accountTypeId) {
+		this.accountTypeId = accountTypeId;
 	}
 
 	public List<Client> getClients() {
@@ -554,6 +552,38 @@ public class User implements Serializable {
 		if (userId != other.userId)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", activated=" + activated
+				+ ", accountTypeId=" + accountTypeId + ", activationCode="
+				+ activationCode + ", active=" + active + ", addressCityCode="
+				+ addressCityCode + ", addressCountryCode="
+				+ addressCountryCode + ", addressDetails=" + addressDetails
+				+ ", addressRegionCode=" + addressRegionCode
+				+ ", alternateEmail=" + alternateEmail + ", dateActivated="
+				+ dateActivated + ", dateCreated=" + dateCreated
+				+ ", dateLastLogin=" + dateLastLogin + ", dateOfBirth="
+				+ dateOfBirth + ", email=" + email + ", firstname=" + firstname
+				+ ", flag=" + flag + ", genderCode=" + genderCode
+				+ ", groupId=" + groupId + ", lastname=" + lastname
+				+ ", maritalStatusCode=" + maritalStatusCode + ", middlename="
+				+ middlename + ", mobileNumber=" + mobileNumber
+				+ ", nationalityCode=" + nationalityCode + ", password="
+				+ password + ", phoneNumber=" + phoneNumber
+				+ ", profilePicture=" + profilePicture + ", registrationId="
+				+ registrationId + ", sourceId=" + sourceId
+				+ ", assessmentExams=" + assessmentExams
+				+ ", assessmentExamsQas=" + assessmentExamsQas
+				+ ", assessmentUserAnswers=" + assessmentUserAnswers
+				+ ", assessments=" + assessments + ", banners=" + banners
+				+ ", careerPosts=" + careerPosts
+				+ ", userEducationalBackgrounds=" + userEducationalBackgrounds
+				+ ", userReferences=" + userReferences
+				+ ", userTechnicalSkills=" + userTechnicalSkills
+				+ ", userWorkExperiences=" + userWorkExperiences + ", clients="
+				+ clients + ", userDetail=" + userDetail + "]";
 	}
 
 }

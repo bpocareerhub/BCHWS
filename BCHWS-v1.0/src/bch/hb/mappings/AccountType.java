@@ -32,10 +32,6 @@ public class AccountType implements Serializable {
 	@OneToMany(mappedBy="accountType")
 	private List<AccountTypeRight> accountTypeRights;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="accountType")
-	private List<User> users;
-
 	public AccountType() {
 	}
 
@@ -77,14 +73,6 @@ public class AccountType implements Serializable {
 
 	public void setAccountTypeRights(List<AccountTypeRight> accountTypeRights) {
 		this.accountTypeRights = accountTypeRights;
-	}
-
-	public List<User> getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
 	}
 
 }
