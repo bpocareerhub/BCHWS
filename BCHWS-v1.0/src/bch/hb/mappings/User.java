@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the users database table.
  * 
@@ -56,6 +55,10 @@ public class User implements Serializable {
 	@Column(name="date_created")
 	private Date dateCreated;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column (name="date_modified")
+	private Date dateModified;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_last_login")
 	private Date dateLastLogin;
@@ -167,40 +170,18 @@ public class User implements Serializable {
 	@JoinColumn(name="user_id", referencedColumnName="user_id")
 	private UserDetail userDetail;
 
-	public User() {		
+	public User() {
 	}
 
-	public User(User user) {
-		this.userId = user.getUserId();
-		this.activated = user.isActivated();
-		this.activationCode = user.getActivationCode();
-		this.active = user.isActive();
-		this.addressCityCode = user.getAddressCityCode();
-		this.addressCountryCode = user.getAddressCountryCode();
-		this.addressDetails = user.getAddressDetails();
-		this.addressRegionCode = user.getAddressRegionCode();
-		this.alternateEmail = user.getAlternateEmail();
-		this.dateActivated = user.getDateActivated();
-		this.dateCreated = user.getDateCreated();
-		this.dateLastLogin = user.getDateLastLogin();
-		this.dateOfBirth = user.getDateOfBirth();
-		this.email = user.getEmail();
-		this.firstname = user.getFirstname();
-		this.flag = user.isFlag();
-		this.genderCode = user.getGenderCode();
-		this.groupId = user.getGroupId();
-		this.lastname = user.getLastname();
-		this.maritalStatusCode = user.getMaritalStatusCode();
-		this.middlename = user.getMiddlename();
-		this.mobileNumber = user.getMobileNumber();
-		this.nationalityCode = user.getNationalityCode();
-		this.password = user.getPassword();
-		this.phoneNumber = user.getPhoneNumber();
-		this.profilePicture = user.getProfilePicture();
-		this.registrationId = user.getRegistrationId();
-		this.sourceId = user.getSourceId();		
+	@PrePersist
+	public void beforePersist() {
+		this.setDateCreated(new Date());
 	}
-
+	
+	@PreUpdate
+	public void beforeUpdate() {
+		this.setDateModified(new Date());
+	}
 	public long getUserId() {
 		return userId;
 	}
@@ -287,6 +268,14 @@ public class User implements Serializable {
 
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateModified() {
+		return dateModified;
+	}
+
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
 	}
 
 	public Date getDateLastLogin() {
@@ -552,38 +541,6 @@ public class User implements Serializable {
 		if (userId != other.userId)
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", activated=" + activated
-				+ ", accountTypeId=" + accountTypeId + ", activationCode="
-				+ activationCode + ", active=" + active + ", addressCityCode="
-				+ addressCityCode + ", addressCountryCode="
-				+ addressCountryCode + ", addressDetails=" + addressDetails
-				+ ", addressRegionCode=" + addressRegionCode
-				+ ", alternateEmail=" + alternateEmail + ", dateActivated="
-				+ dateActivated + ", dateCreated=" + dateCreated
-				+ ", dateLastLogin=" + dateLastLogin + ", dateOfBirth="
-				+ dateOfBirth + ", email=" + email + ", firstname=" + firstname
-				+ ", flag=" + flag + ", genderCode=" + genderCode
-				+ ", groupId=" + groupId + ", lastname=" + lastname
-				+ ", maritalStatusCode=" + maritalStatusCode + ", middlename="
-				+ middlename + ", mobileNumber=" + mobileNumber
-				+ ", nationalityCode=" + nationalityCode + ", password="
-				+ password + ", phoneNumber=" + phoneNumber
-				+ ", profilePicture=" + profilePicture + ", registrationId="
-				+ registrationId + ", sourceId=" + sourceId
-				+ ", assessmentExams=" + assessmentExams
-				+ ", assessmentExamsQas=" + assessmentExamsQas
-				+ ", assessmentUserAnswers=" + assessmentUserAnswers
-				+ ", assessments=" + assessments + ", banners=" + banners
-				+ ", careerPosts=" + careerPosts
-				+ ", userEducationalBackgrounds=" + userEducationalBackgrounds
-				+ ", userReferences=" + userReferences
-				+ ", userTechnicalSkills=" + userTechnicalSkills
-				+ ", userWorkExperiences=" + userWorkExperiences + ", clients="
-				+ clients + ", userDetail=" + userDetail + "]";
 	}
 
 }

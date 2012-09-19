@@ -1,18 +1,23 @@
 package bch.hb.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 
 import bch.hb.mappings.User;
+import bch.hb.mappings.UserWorkExperience;
 import bch.ws.interfaces.CRUD;
 
 public class CareerSeekersDao extends UsersDao implements CRUD {
-
+	
 	@Override
 	public List<User> retrieveAll() {
 		List<User> users = new ArrayList<User>();
@@ -34,26 +39,28 @@ public class CareerSeekersDao extends UsersDao implements CRUD {
 
 	@Override
 	public boolean updateRecord(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		return super.updateRecord(obj);
 	}
 
 	@Override
 	public boolean createRecord(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		User user = obj instanceof User ? (User) obj : null;
+		return super.createRecord(user);
 	}
 
-	public boolean createWorkExperience(User user) {
-		boolean success = false;
-		try {
-			Transaction transaction = this.getSession().beginTransaction();
-			this.getSession().save(user);
-			transaction.commit();
-			success = true;
-		} catch(HibernateException hex) {
-			hex.printStackTrace();
-		}
-		return success;
+	public boolean createRecordList(List<?> listObj) {
+		return super.createRecord(listObj);
+	}
+	
+	public boolean createWorkExperience(UserWorkExperience uwe) {
+		return super.createRecord(uwe);
+	}
+	
+	public boolean updateWorkExperience(UserWorkExperience uwe) {
+		return super.updateRecord(uwe);
+	}
+	
+	public boolean createWorkExperienceList(List<UserWorkExperience> listUwe) {
+		return super.createRecord(listUwe);
 	}
 }

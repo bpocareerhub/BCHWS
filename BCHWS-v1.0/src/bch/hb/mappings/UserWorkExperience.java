@@ -2,6 +2,8 @@ package bch.hb.mappings;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -55,10 +57,10 @@ public class UserWorkExperience implements Serializable {
 	@Column(name="job_title")
 	private String jobTitle;
 
-	@Column(name="others_industry")
+	@Column(name="others_industry", nullable=true)
 	private String othersIndustry;
 
-	@Column(name="others_specialization")
+	@Column(name="others_specialization", nullable=true)
 	private String othersSpecialization;
 
 	@Column(name="position_level_code")
@@ -85,6 +87,16 @@ public class UserWorkExperience implements Serializable {
 	public UserWorkExperience() {
 	}
 
+	@PrePersist
+	protected void beforePersist() {
+		dateCreated = new Date();
+	}
+	
+	@PreUpdate
+	protected void beforeUpdate() {
+		dateModified = new Date();
+	}
+	
 	public int getWorkExperienceId() {
 		return this.workExperienceId;
 	}
