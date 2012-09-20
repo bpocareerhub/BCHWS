@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="BCHWS-v1.0">		
+		<class>bch.hb.mappings.UserDetail</class>
+		<class>bch.hb.mappings.UserEducationalBackground</class>
+		<class>bch.hb.mappings.UserReference</class>
+		<class>bch.hb.mappings.UserTechnicalSkill</class>
+		<class>bch.hb.mappings.UserWorkExperience</class>
+		<class>bch.hb.mappings.User</class>
+		<class>bch.hb.mappings.AccountTypeRight</class>
+		<class>bch.hb.mappings.AccountTypeRightPK</class>
+		<class>bch.hb.mappings.AccountType</class>
+		<class>bch.hb.mappings.AssessmentExam</class>
+		<class>bch.hb.mappings.AssessmentExamsQa</class>
+		<class>bch.hb.mappings.AssessmentUserAnswer</class>
+		<class>bch.hb.mappings.Assessment</class>
+		<class>bch.hb.mappings.Banner</class>
+		<class>bch.hb.mappings.CareerApplicationRemark</class>
+		<class>bch.hb.mappings.CareerApplicationScheduledInterview</class>
+		<class>bch.hb.mappings.CareerApplication</class>
+		<class>bch.hb.mappings.CareerPost</class>
+		<class>bch.hb.mappings.Client</class>
+		<class>bch.hb.mappings.EmployerPurchasedProfile</class>
+		<class>bch.hb.mappings.EmployerPurchasedProfilePK</class>
+		<class>bch.hb.mappings.Group</class>
+		<class>bch.hb.mappings.PartnerRegistrationLink</class>
+		<class>bch.hb.mappings.Requisition</class>
+		<class>bch.hb.mappings.ScheduledTask</class>
+		<class>bch.hb.mappings.Transaction</class>
+	</persistence-unit>
+</persistence>
